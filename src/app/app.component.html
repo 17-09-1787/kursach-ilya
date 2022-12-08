@@ -1,0 +1,22 @@
+<div class="container">
+  <app-form *ngIf="isVisibleFormFirst" (toggle)="firstData($event)"></app-form>
+  <app-second-form *ngIf="isVisibleFormSecond" (toggle)="secondData($event)"></app-second-form>
+  <table *ngIf="isVisibleTable">
+    <tr>
+      <th class="space"></th>
+      <th *ngFor="let element of arrayB; index as idx">
+        <h2>B{{idx + 1}}</h2>
+        <p>{{element}}</p>
+      </th>
+    </tr>
+    <tr *ngFor="let element of matrix; index as idx">
+      <td>
+        <h2>A{{idx + 1}}</h2>
+        <p>{{arrayA[idx]}}</p>
+      </td>
+      <td *ngFor="let elements of element">
+        <p>{{elements}}</p>
+      </td>
+    </tr>
+  </table>
+</div>

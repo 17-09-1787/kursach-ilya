@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="numberOfWarehouses">Количество складов: </label>
+    <input id="numberOfWarehouses" type="number" formControlName="numberOfWarehouses">
+  </div>
+
+  <div>
+    <label for="numberOfStores">Количество магазинов: </label>
+    <input id="numberOfStores" type="number" formControlName="numberOfStores">
+  </div>
+
+  <button [disabled]="form.pristine || form.invalid" type="submit">Расчёт</button>
+</form>

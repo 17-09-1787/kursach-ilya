@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="numberOfProductsByWarehouse">Количество товаров складов: </label>
+    <input id="numberOfProductsByWarehouse" type="text" formControlName="numberOfProductsByWarehouse">
+  </div>
+
+  <div>
+    <label for="numberOfProductsByStores">Количество товаров магазинов: </label>
+    <input id="numberOfProductsByStores" type="text" formControlName="numberOfProductsByStores">
+  </div>
+
+  <div>
+    <label for="matrix">Матрица стоимостей: </label>
+    <input id="matrix" type="text" formControlName="matrix">
+  </div>
+
+
+  <button [disabled]="form.pristine || form.invalid" type="submit">Расчёт</button>
+</form>
