@@ -16,9 +16,9 @@ export class SecondFormComponent {
   constructor() {}
 
   form = new FormGroup({
-    numberOfProductsByWarehouse: new FormControl('0', [Validators.required]),
-    numberOfProductsByStores: new FormControl('0', [Validators.required]),
-    matrix: new FormControl('0', [Validators.required])
+    numberOfProductsByWarehouse: new FormControl('', [Validators.required]),
+    numberOfProductsByStores: new FormControl('', [Validators.required]),
+    matrix: new FormControl('', [Validators.required])
   });
 
   public onSubmit(): void {
