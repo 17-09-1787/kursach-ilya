@@ -41,6 +41,8 @@ export class AppComponent {
 
   public visibleTotal = false;
 
+  /* Принимает данные из первой формы*/
+
   public firstData(data: FirstData): void {
     this.isVisibleFormFirst = false;
 
@@ -48,6 +50,8 @@ export class AppComponent {
 
     this.isVisibleFormSecond = true;
   }
+
+  /* Принимает данные из второй формы*/
 
   public secondData(data: SecondData): void {
     this.data = data;
@@ -72,6 +76,8 @@ export class AppComponent {
     this._visible();
     this._checkTypeTask();
   }
+
+  /* Считает ответ с помощью метода северо-западного угла */
 
   public northwestCornerMethod(): void {
     const resource = this.arrayA.map((el: string | number) => el);
@@ -99,9 +105,9 @@ export class AppComponent {
             array.push(remainsB);
           } else if (remainsA < remainsB) {
             const difference = remainsB - remainsA;
-            remainsA = 0;
             requirement[j] = difference;
-            array.push(difference);
+            array.push(remainsA);
+            remainsA = 0;
           }
           this.filled += 1;
         } else {
@@ -116,6 +122,8 @@ export class AppComponent {
 
     this.total = this._getTotalAnswer();
   }
+
+  /* Проверяет правильно ли посчитан опорный план */
 
   public checkTruth(): void {
     const data = this.count.A + this.count.B - 1;
@@ -162,6 +170,8 @@ export class AppComponent {
       this.showButton = true;
     }
   }
+
+  /* Получает и выводит ответ */
 
   public getAnswer(): void {
 
@@ -258,6 +268,8 @@ export class AppComponent {
 
   }
 
+  /* Если в оптимальной матрице есть хотя бы одно отрицательное число */
+
   private _withNegative(): void {
     let minNegative = 0;
 
@@ -277,10 +289,14 @@ export class AppComponent {
 
   }
 
+  /* Показать на html какие-то блоки */
+
   private _visible(): void {
     this.isVisibleFormSecond = false;
     this.isVisibleTable = true;
   }
+
+  /* Узнаём какого типа задача */
 
   private _checkTypeTask(): void {
     const sumA = this._sumOfArray(this.arrayA);
@@ -302,11 +318,15 @@ export class AppComponent {
 
   }
 
+  /* Приватный метод, который считает сумму чисел из массива */
+
   private _sumOfArray(data: number[]): number {
     return data.reduce(function (previousValue: number, currentValue: number) {
       return +previousValue + +currentValue;
     });
   }
+
+  /* Считает уравнение типа x + 5 = 10 */
 
   private _solveEquation(data: any[]): any {
     const values = data;
@@ -325,6 +345,8 @@ export class AppComponent {
     return [a, c - b];
   }
 
+  /* Вызывает зависимый метод и просматривает схожесть значений между двумя матрицами */
+
   private _replaceKnown(): void {
     for (let i = 0; i < this.systemEquation.length; i++) {
       for (let j = 0; j < this.systemEquation[i].length; j++) {
@@ -332,6 +354,8 @@ export class AppComponent {
       }
     }
   }
+
+  /* Зависимый метод */
 
   private _checkMatrix(value: string | number): any {
     let elem: number | string = 0;
@@ -348,6 +372,8 @@ export class AppComponent {
 
     return elem;
   }
+
+  /* Проверяет есть ли два number в массиве типов, тем самым узнаём где в уравнении есть 1 неизвестное */
 
   private _checkTwoNumber(): void {
     for (let i = 0; i < this.systemEquation.length; i++) {
@@ -372,6 +398,8 @@ export class AppComponent {
       }
     }
   }
+
+  /* Получаем конечный ответ */
 
   private _getTotalAnswer(): number {
 
